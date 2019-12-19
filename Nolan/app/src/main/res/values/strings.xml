@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Nolan Pod</string>
+    <string name="category_recommend">推荐</string>
+    <string name="category_nearby">附近</string>
+</resources>
