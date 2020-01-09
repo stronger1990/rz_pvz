@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.StaggeredGridLayoutManager;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -68,9 +68,9 @@ public class RecommendFragment extends BaseFragment implements SwipeRefreshLayou
         // 垂直一列
         // mDataBinding.operatorsRecycler.setLayoutManager(new LinearLayoutManager(getActivity()));
         // 网格两列
-        // mDataBinding.operatorsRecycler.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+        mDataBinding.operatorsRecycler.setLayoutManager(new GridLayoutManager(getActivity(), 2));
         // 瀑布流两列
-        mDataBinding.operatorsRecycler.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
+//        mDataBinding.operatorsRecycler.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
         mDataBinding.operatorsRecycler.setItemAnimator(new DefaultItemAnimator());
         // mDataBinding.operatorsRecycler.addItemDecoration(new DividerItemDecoration(getActivity(), LinearLayoutManager.VERTICAL));
         mDataBinding.operatorsRecycler.setAdapter(adapter);
@@ -117,7 +117,6 @@ public class RecommendFragment extends BaseFragment implements SwipeRefreshLayou
                         Log.e("error:", "" + throwable.getMessage());
                     }
                 });
-
     }
 
     @Override
@@ -125,6 +124,7 @@ public class RecommendFragment extends BaseFragment implements SwipeRefreshLayou
         mDataBinding.operatorsRefresh.post(new Runnable() {
             @Override
             public void run() {
+                getRecommendPics();
                 mDataBinding.operatorsRefresh.setRefreshing(false);
             }
         });
